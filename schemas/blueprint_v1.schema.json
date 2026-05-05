@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harborworks.local/schemas/blueprint_v1.schema.json",
+  "title": "Harborworks Vehicle Blueprint v1",
+  "type": "object",
+  "required": ["schema_version", "vehicle_class", "meta", "nodes", "beams"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "vehicle_class": { "const": "marine_small" },
+    "meta": { "type": "object" },
+    "nodes": { "type": "array" },
+    "beams": { "type": "array" },
+    "panels": { "type": "array" },
+    "components": { "type": "array" },
+    "routes": { "type": "array" },
+    "control_links": { "type": "array" },
+    "compartments": { "type": "array" }
+  }
+}

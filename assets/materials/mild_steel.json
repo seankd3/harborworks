@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "material_id": "mild_steel",
+  "display_name": "Mild Steel",
+  "density_kg_m3": 7850.0,
+  "yield_strength_mpa": 250.0,
+  "impact_toughness": 0.8,
+  "corrosion_resistance": 0.35,
+  "repair_difficulty": 0.3,
+  "cost_per_kg": 1.8,
+  "watertight_rating": 0.9
+}

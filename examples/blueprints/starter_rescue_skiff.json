@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "vehicle_class": "marine_small",
+  "meta": {
+    "blueprint_id": "starter_rescue_skiff",
+    "display_name": "Starter Rescue Skiff",
+    "author": "Harborworks Foundation",
+    "version": "0.1.0",
+    "created_at": "2026-05-05T00:00:00Z",
+    "modified_at": "2026-05-05T00:00:00Z"
+  },
+  "nodes": [
+    { "id": "n_bow_keel", "position": { "x": 0.0, "y": 0.0, "z": 3.2 }, "flags": ["user_placed"], "label": "Bow keel" },
+    { "id": "n_stern_keel", "position": { "x": 0.0, "y": 0.0, "z": -3.2 }, "flags": ["user_placed"], "label": "Stern keel" },
+    { "id": "n_port_mid_chine", "position": { "x": -1.05, "y": 0.35, "z": 0.0 }, "flags": ["user_placed"], "label": "Port mid chine" },
+    { "id": "n_starboard_mid_chine", "position": { "x": 1.05, "y": 0.35, "z": 0.0 }, "flags": ["user_placed"], "label": "Starboard mid chine" },
+    { "id": "n_port_stern_gunwale", "position": { "x": -1.15, "y": 1.0, "z": -2.9 }, "flags": ["user_placed"], "label": "Port stern gunwale" },
+    { "id": "n_starboard_stern_gunwale", "position": { "x": 1.15, "y": 1.0, "z": -2.9 }, "flags": ["user_placed"], "label": "Starboard stern gunwale" },
+    { "id": "n_port_bow_gunwale", "position": { "x": -0.6, "y": 1.0, "z": 2.8 }, "flags": ["user_placed"], "label": "Port bow gunwale" },
+    { "id": "n_starboard_bow_gunwale", "position": { "x": 0.6, "y": 1.0, "z": 2.8 }, "flags": ["user_placed"], "label": "Starboard bow gunwale" }
+  ],
+  "beams": [
+    { "id": "b_keel", "node_a": "n_stern_keel", "node_b": "n_bow_keel", "profile_id": "tube_beam_small", "material_id": "marine_aluminum_5083", "wall_thickness_m": 0.003, "connection_type": "welded" },
+    { "id": "b_port_chine", "node_a": "n_port_stern_gunwale", "node_b": "n_port_bow_gunwale", "profile_id": "tube_beam_small", "material_id": "marine_aluminum_5083", "wall_thickness_m": 0.003, "connection_type": "welded" },
+    { "id": "b_starboard_chine", "node_a": "n_starboard_stern_gunwale", "node_b": "n_starboard_bow_gunwale", "profile_id": "tube_beam_small", "material_id": "marine_aluminum_5083", "wall_thickness_m": 0.003, "connection_type": "welded" },
+    { "id": "b_stern_frame", "node_a": "n_port_stern_gunwale", "node_b": "n_starboard_stern_gunwale", "profile_id": "tube_beam_small", "material_id": "marine_aluminum_5083", "wall_thickness_m": 0.003, "connection_type": "welded" },
+    { "id": "b_mid_frame", "node_a": "n_port_mid_chine", "node_b": "n_starboard_mid_chine", "profile_id": "tube_beam_small", "material_id": "marine_aluminum_5083", "wall_thickness_m": 0.003, "connection_type": "welded" },
+    { "id": "b_bow_frame", "node_a": "n_port_bow_gunwale", "node_b": "n_starboard_bow_gunwale", "profile_id": "tube_beam_small", "material_id": "marine_aluminum_5083", "wall_thickness_m": 0.003, "connection_type": "welded" }
+  ],
+  "panels": [
+    { "id": "p_port_bottom", "boundary_nodes": ["n_stern_keel", "n_bow_keel", "n_port_mid_chine"], "material_id": "marine_aluminum_5083", "thickness_m": 0.004, "seal_rating": 0.8, "compartment_boundary": true },
+    { "id": "p_starboard_bottom", "boundary_nodes": ["n_bow_keel", "n_stern_keel", "n_starboard_mid_chine"], "material_id": "marine_aluminum_5083", "thickness_m": 0.004, "seal_rating": 0.8, "compartment_boundary": true }
+  ],
+  "components": [
+    {
+      "id": "battery_1",
+      "part_id": "battery_small_placeholder",
+      "transform": {
+        "translation": { "x": 0.0, "y": 0.55, "z": -1.2 },
+        "rotation_euler_deg": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "scale": { "x": 1.0, "y": 1.0, "z": 1.0 }
+      },
+      "mass_kg": 18.0,
+      "ports": [
+        { "id": "battery_1_out", "kind": "electric_out", "local_position": { "x": 0.0, "y": 0.1, "z": 0.0 }, "capacity": 600.0, "required": false, "label": "12V out" }
+      ]
+    },
+    {
+      "id": "bilge_pump_1",
+      "part_id": "bilge_pump_placeholder",
+      "transform": {
+        "translation": { "x": 0.0, "y": 0.2, "z": -0.4 },
+        "rotation_euler_deg": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "scale": { "x": 1.0, "y": 1.0, "z": 1.0 }
+      },
+      "mass_kg": 4.5,
+      "ports": [
+        { "id": "bilge_pump_1_power", "kind": "electric_in", "local_position": { "x": 0.0, "y": 0.05, "z": 0.0 }, "capacity": 120.0, "required": true, "label": "Power" },
+        { "id": "bilge_pump_1_water_out", "kind": "water_out", "local_position": { "x": 0.0, "y": 0.1, "z": 0.1 }, "capacity": 40.0, "required": false, "label": "Outlet" }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "route_battery_to_pump",
+      "route_type": "wire",
+      "from": { "component_id": "battery_1", "port_id": "battery_1_out" },
+      "to": { "component_id": "bilge_pump_1", "port_id": "bilge_pump_1_power" },
+      "length_m": 1.1
+    }
+  ],
+  "control_links": [
+    {
+      "id": "control_pump_switch_placeholder",
+      "source_component_id": "battery_1",
+      "target_component_id": "bilge_pump_1",
+      "signal": "manual_pump_enable_placeholder"
+    }
+  ],
+  "compartments": [
+    { "id": "compartment_main", "marker": { "x": 0.0, "y": 0.45, "z": -0.2 }, "volume_m3": 2.4, "is_watertight": false }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harborworks.local/schemas/material_v1.schema.json",
+  "title": "Harborworks Material v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "material_id",
+    "display_name",
+    "density_kg_m3",
+    "yield_strength_mpa",
+    "impact_toughness",
+    "corrosion_resistance",
+    "repair_difficulty",
+    "cost_per_kg",
+    "watertight_rating"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "material_id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "density_kg_m3": { "type": "number", "minimum": 0 },
+    "yield_strength_mpa": { "type": "number", "minimum": 0 },
+    "impact_toughness": { "type": "number", "minimum": 0 },
+    "corrosion_resistance": { "type": "number", "minimum": 0 },
+    "repair_difficulty": { "type": "number", "minimum": 0 },
+    "cost_per_kg": { "type": "number", "minimum": 0 },
+    "watertight_rating": { "type": "number", "minimum": 0 }
+  }
+}

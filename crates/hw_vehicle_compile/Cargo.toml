@@ -1,0 +1,11 @@
+[package]
+name = "hw_vehicle_compile"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+hw_core = { path = "../hw_core" }
+hw_math = { path = "../hw_math" }
+hw_vehicle = { path = "../hw_vehicle" }
+glam.workspace = true
+serde.workspace = true

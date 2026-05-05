@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "material_id": "marine_aluminum_5083",
+  "display_name": "Marine Aluminum 5083",
+  "density_kg_m3": 2650.0,
+  "yield_strength_mpa": 215.0,
+  "impact_toughness": 0.65,
+  "corrosion_resistance": 0.9,
+  "repair_difficulty": 0.45,
+  "cost_per_kg": 6.5,
+  "watertight_rating": 0.95
+}
