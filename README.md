@@ -27,3 +27,11 @@ cargo run -p hw_tools -- validate
 cargo run -p hw_tools -- sim-replay --blueprint examples/blueprints/starter_rescue_skiff.json --seconds 10
 ./tools/check.sh
 ```
+
+Android debug APK shell:
+
+```sh
+./tools/build-apk.sh
+```
+
+The APK is written to `android/app/build/outputs/apk/debug/app-debug.apk`. It is a Milestone 0 Android shell, not yet the Rust engine/editor port.
