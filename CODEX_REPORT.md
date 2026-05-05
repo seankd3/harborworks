@@ -16,16 +16,11 @@ Date: 2026-05-05
   - `cargo run -p hw_tools -- validate`
   - `cargo run -p hw_tools -- sim-replay --blueprint examples/blueprints/starter_rescue_skiff.json --seconds 10`
 - Added `tools/check.sh`.
-- Added a minimal Android Gradle project under `android/` using Android Gradle Plugin 8.13.0, Java, compileSdk 35, minSdk 26, and package `com.seankennethdoherty.harborworks`.
-- Added a plain Android `MainActivity` shell showing Harborworks, Engineering sandbox prototype, Milestone 0 foundation, typed IDs, blueprint validation, starter rescue skiff, deterministic replay, and a replay summary toggle.
-- Added `tools/build-apk.sh` to build a real debug APK at `android/app/build/outputs/apk/debug/app-debug.apk` using local Android SDK and cached Gradle, with a direct Android SDK packaging fallback for restricted sandboxes where Gradle cannot initialize.
-- Added `docs/android-apk.md` documenting that the APK is a Milestone 0 shell, not yet a Rust engine/editor Android port.
-- Added `.gitignore` entries for Rust and Android build outputs plus `android/local.properties`.
+- Added `.gitignore` entries for Rust build outputs and local secret files.
 
 ## Not Implemented
 
 - No graphical editor, renderer, UI, missions, real CAD, mesh generation, real physics, real hydrodynamics, real buoyancy, FEA, damage, repair, or full system simulation.
-- Android APK does not embed or run the Rust engine yet; it is an honest installable shell for the current foundation status.
 - JSON schemas are initial hand-authored contract scaffolds; CLI validation currently parses schemas and validates data through Rust typed models rather than performing full JSON Schema validation.
 - Runtime vehicle is an honest deterministic proxy only.
 
@@ -44,19 +39,16 @@ Date: 2026-05-05
   - Final speed: `101.978 m/s`.
   - Energy placeholder: `814614.875 J`.
 - `./tools/check.sh`: passed.
-- `./tools/build-apk.sh`: passed.
-  - Gradle startup is blocked in this sandbox by Java socket creation restrictions: `Could not determine a usable wildcard IP for this machine`.
-  - The script fell back to direct Android SDK packaging with `aapt2`, `javac`, `d8`, `zipalign`, and `apksigner`.
-  - APK output: `android/app/build/outputs/apk/debug/app-debug.apk`.
-- `/home/sean/Android/Sdk/build-tools/35.0.0/apksigner verify --print-certs android/app/build/outputs/apk/debug/app-debug.apk`: passed.
-  - Certificate DN: `CN=Android Debug, O=Android, C=US`.
-- `file android/app/build/outputs/apk/debug/app-debug.apk`: reported `Android package (APK), with AndroidManifest.xml, with APK Signing Block`.
 
 Note: the first plain Cargo attempt tried to refresh `index.crates.io` and failed because network is unavailable in this sandbox. A lockfile was generated with offline-compatible cached dependencies, after which the normal acceptance commands passed.
 
 Commit attempt:
 
 - `git add README.md CODEX_REPORT.md Cargo.toml Cargo.lock assets crates examples schemas tools && git commit -m "Build Harborworks Rust foundation"`: failed because the sandbox reported `.git/index.lock` as read-only.
+
+## Correction
+
+- Removed the accidental Android/APK shell path after confirming Harborworks is PC/Linux-first per the MVP specification. The project target remains a Linux/PC desktop prototype.
 
 ## Next Recommended Tasks
 
